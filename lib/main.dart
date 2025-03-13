@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:sizer/sizer.dart';
 
 import 'app/routes/app_pages.dart';
 import 'firebase_options.dart';
@@ -25,17 +26,21 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Teen Patti',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-        //fontFamily: 'font1', // ✅ Apply the font globally
+    return Sizer(
+        builder: (context, orientation, screenType) {
+        return GetMaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'Teen Patti',
+          theme: ThemeData(
+            colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+            useMaterial3: true,
+            //fontFamily: 'font1', // ✅ Apply the font globally
 
-      ),
-      initialRoute: Routes.FLASH,
-      getPages: AppPages.routes,
+          ),
+          initialRoute: Routes.FLASH,
+          getPages: AppPages.routes,
+        );
+      }
     );
   }
 }
