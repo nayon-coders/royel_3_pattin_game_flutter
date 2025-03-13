@@ -185,6 +185,7 @@ class HomeController extends GetxController {
   //get card from firebase
   RxList<String> nextCards = <String>[].obs;
   void getCards(){
+    nextCards.clear();
     FirebaseFirestore.instance.collection("next_cards").doc("next_card").get().then((value) {
       var cardData = value.data()!; // Assuming this returns Map<String, dynamic>
 
@@ -206,7 +207,7 @@ class HomeController extends GetxController {
 
   //empty card1, card2, card3 from firebase
   void emptyCards(){
-    nextCards.clear();
+
     FirebaseFirestore.instance.collection("next_cards").doc("next_card").update({
       "card1": "",
       "card2": "",

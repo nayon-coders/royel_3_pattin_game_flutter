@@ -66,8 +66,8 @@ class CenterWidgets extends GetView<HomeController> {
                                        child: Center(
                                          child: Obx(() {
                                              return Image.asset("${controller.nextCards.value.isEmpty ? controller.randomImages.value[0] : "assets/cards/${controller.nextCards.value[0]}"}",
-                                                 height: 250,
-                                                 width:170,
+                                               height: 250,
+                                               width:170,
                                                fit: BoxFit.contain,
                                              );
                                            }
