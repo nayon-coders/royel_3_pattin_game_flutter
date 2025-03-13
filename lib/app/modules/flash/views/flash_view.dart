@@ -18,7 +18,7 @@ class FlashView extends GetView<FlashController> {
           Get.offAllNamed(Routes.FROD);
         }else{
           Future.delayed(const Duration(seconds: 2), () {
-            Get.offAllNamed(Routes.HOME); //
+            Get.offAllNamed(Routes.MAIN); //
           });
         }
 

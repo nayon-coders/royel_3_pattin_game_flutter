@@ -6,6 +6,7 @@ import 'package:teen_patti/app/modules/home/controllers/home_controller.dart';
 
 import '../../../../utily/app_colors.dart';
 import '../../../../utily/assets.dart';
+import '../../main/views/main_view.dart';
 import '../views/home_view.dart';
 
 class CenterWidgets extends GetView<HomeController> {
@@ -28,7 +29,7 @@ class CenterWidgets extends GetView<HomeController> {
               children: [
                 Positioned(
                   bottom: 0,
-                  child: BottomButtonsViews(size: size,),
+                  child: BottomButtonsViews( size: size,),
                 ),
                 Container(
                   transform: Matrix4.translationValues(0.0, -40.0, 0.0),
@@ -54,7 +55,7 @@ class CenterWidgets extends GetView<HomeController> {
                      children: [
                        Obx(() {
                          if(controller.isSpin1st.value == true){
-                            return AnimationSlider(controller: controller, size: size);
+                            return AnimationSlider(controller: controller,  );
                          }else{
                             return Container(
                               height: 280,
@@ -81,9 +82,9 @@ class CenterWidgets extends GetView<HomeController> {
                        SizedBox(width: 12,),
                         Obx(() {
                           if(controller.isSpin2nd.value == true){
-                            return AnimationSlider(controller: controller, size: size);
+                            return AnimationSlider(controller: controller);
                           }else{
-                            return Container(
+                            return Container( 
                               height: 280,
                               width: 200,
                               padding: EdgeInsets.all(5),
@@ -108,7 +109,7 @@ class CenterWidgets extends GetView<HomeController> {
                        SizedBox(width: 12,),
                         Obx(() {
                           if(controller.isSpin3tr.value == true){
-                            return AnimationSlider(controller: controller, size: size);
+                            return AnimationSlider(controller: controller,  );
                           }else{
                             return Container(
                               height: 280,
@@ -188,54 +189,6 @@ class CenterWidgets extends GetView<HomeController> {
           ),
 
         ],
-      ),
-    );
-  }
-}
-
-class AnimationSlider extends StatelessWidget {
-  const AnimationSlider({
-    super.key,
-    required this.controller,
-    required this.size,
-  });
-
-  final HomeController controller;
-  final Size size;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 280,
-      width: 200,
-      child: CarouselSlider(
-        items: controller.finalImageList.value.map((e) {
-          return Container(
-            height: 280,
-            width: 200,
-            padding: EdgeInsets.all(5),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(5),
-            ),
-            child: Center(
-              child:Image.asset("${e}",
-                height: 280,
-                width: 200,
-                fit: BoxFit.contain,
-              ),
-            ),
-          );
-        }).toList(),
-        options: CarouselOptions(
-          height: 280,
-          autoPlay: true,
-          enlargeCenterPage: false,
-          viewportFraction: 1,
-          autoPlayAnimationDuration: const Duration(milliseconds: 150),
-          autoPlayInterval: const Duration(milliseconds: 100),
-          scrollDirection: Axis.vertical, // Keep it vertical
-        ),
       ),
     );
   }
