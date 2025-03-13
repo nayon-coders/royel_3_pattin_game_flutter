@@ -256,7 +256,7 @@ class MainView extends GetView<HomeController> {
                                     Container(
                                       width: 90,
                                       height: 25,
-                                      margin: EdgeInsets.only(bottom: 7, top: 2),
+                                      margin: EdgeInsets.only(bottom: 7),
                                       decoration: BoxDecoration(
                                         image: DecorationImage(
                                           image: AssetImage(AppAssets.button),
@@ -313,7 +313,7 @@ class MainView extends GetView<HomeController> {
                                     Container(
                                       width: 90,
                                       height: 25,
-                                      margin: EdgeInsets.only(bottom: 7, top: 2),
+                                      margin: EdgeInsets.only(bottom: 7,),
                                       decoration: BoxDecoration(
                                         image: DecorationImage(
                                           image: AssetImage(AppAssets.button),
