@@ -64,7 +64,7 @@ class MainView extends GetView<HomeController> {
                                 style: TextStyle(
                                   color: AppColors.textColor,
                                   fontSize: 20,
-                                  fontWeight: FontWeight.bold,
+                                  fontWeight: FontWeight.w500,
                                 ),
                               ),
                             ),
@@ -114,7 +114,7 @@ class MainView extends GetView<HomeController> {
                                     }),
                                   ),
                                 ),
-                                // SizedBox(height: 7,),
+                                SizedBox(height: 7,),
                                 InkWell(
                                   onTap: (){},
                                   child: SizedBox(
@@ -184,18 +184,15 @@ class MainView extends GetView<HomeController> {
                                     height: 60,
                                     // margin: EdgeInsets.only(top: 7, bottom: 7,),
                                     decoration: BoxDecoration(
-                                      image: DecorationImage(
-                                        image: AssetImage(AppAssets.button),
-                                        fit: BoxFit.cover,
-                                      ),
+                                      color: Color(0xffB92836)
                                     ),
                                     child: Center(
                                       child: Obx(() {
-                                        return Text("Bed: ${controller.amount.value}",
+                                        return Text("Bet: ${controller.amount.value}",
                                           style: TextStyle(
                                             color: AppColors.textColor,
                                             fontSize: 16,
-                                            fontWeight: FontWeight.bold,
+                                            fontWeight: FontWeight.w600,
                                           ),
                                         );
                                       }
@@ -214,17 +211,14 @@ class MainView extends GetView<HomeController> {
                                         // width: 8.w,
                                         // margin: EdgeInsets.only(top: 7, bottom: 7,),
                                         decoration: BoxDecoration(
-                                          image: DecorationImage(
-                                            image: AssetImage(AppAssets.button),
-                                            fit: BoxFit.cover,
-                                          ),
+                                            color: Color(0xffA31C23)
                                         ),
                                         child: Center(
                                           child: Text("Reset",
                                             style: TextStyle(
                                               color: AppColors.textColor,
                                               fontSize: 17,
-                                              fontWeight: FontWeight.bold,
+                                              fontWeight: FontWeight.w500,
                                             ),
                                           ),
                                         ),
@@ -244,10 +238,6 @@ class MainView extends GetView<HomeController> {
                                 color: AppColors.buttonBg,
                                 borderRadius: BorderRadius.circular(5),
                                 border: Border.all(color:Color(0xffC91016), width: 7),
-                                // image: DecorationImage(
-                                //   image: AssetImage(AppAssets.button_red),
-                                //   fit: BoxFit.cover,
-                                // ),
                               ),
                               padding: EdgeInsets.only(left: 10,),
                               child: Column(
@@ -269,10 +259,7 @@ class MainView extends GetView<HomeController> {
                                         height: 20,
                                         margin: EdgeInsets.only(top: 3),
                                         decoration: BoxDecoration(
-                                          image: DecorationImage(
-                                            image: AssetImage(AppAssets.button),
-                                            fit: BoxFit.cover,
-                                          ),
+                                         color: AppColors.btnTextBg
                                         ),
                                         child: Center(
                                           child: Text("10000",
@@ -299,10 +286,6 @@ class MainView extends GetView<HomeController> {
                                 color: AppColors.buttonBg,
                                 borderRadius: BorderRadius.circular(5),
                                 border: Border.all(color:Color(0xffC91016), width: 7),
-                                // image: DecorationImage(
-                                //   image: AssetImage(AppAssets.button_red),
-                                //   fit: BoxFit.cover,
-                                // ),
                               ),
                               padding: EdgeInsets.only(left: 10,),
                               child: Column(
@@ -324,10 +307,7 @@ class MainView extends GetView<HomeController> {
                                         height: 20,
                                         margin: EdgeInsets.only(top: 3),
                                         decoration: BoxDecoration(
-                                          image: DecorationImage(
-                                            image: AssetImage(AppAssets.button),
-                                            fit: BoxFit.cover,
-                                          ),
+                                         color: AppColors.btnTextBg
                                         ),
                                         child: Center(
                                           child: Text("100000",
@@ -433,7 +413,7 @@ class MainView extends GetView<HomeController> {
                                 height: 250,
                                 width: 600,
                                 //margin: EdgeInsets.only(left: 15, right: 15),
-                                color: Colors.black.withOpacity(0.6),
+                                color: Colors.black.withOpacity(0.3),
                                 child: Center(
                                   child: Stack(
                                     children: [
