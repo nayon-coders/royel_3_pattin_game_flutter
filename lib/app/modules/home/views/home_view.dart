@@ -51,7 +51,7 @@ class HomeView extends GetView<HomeController> {
                         ],
                       ),
 
-                      BottomButtonsViews(size: size),
+                   //   BottomButtonsViews(size: size),
 
 
                       Positioned(
@@ -100,10 +100,10 @@ class BottomButtonsViews extends GetView<HomeController> {
         alignment: Alignment.center,
         child: Container(
           alignment: Alignment.center,
-          margin: EdgeInsets.only(left: size.width*0.22, right: 10),
-          transform: Matrix4.translationValues(0.0, 10.0, 0.0),
+          //margin: EdgeInsets.only(left: size.width*0.22, right: 10),
+          transform: Matrix4.translationValues(15.0, 10.0, 0.0),
           height: 60,
-          width: size.width * 0.61,
+          width: 560,
           padding: const EdgeInsets.only(left: 10.0, right: 10),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,

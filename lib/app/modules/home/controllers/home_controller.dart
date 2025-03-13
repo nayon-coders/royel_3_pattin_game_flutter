@@ -139,8 +139,9 @@ class HomeController extends GetxController {
       if(isSound.value){
         Get.find<AudioController>().playAudio(AppAudio.bg,  loop: true);
       }
-      Future.delayed(Duration(milliseconds: 200), (){
+      Future.delayed(Duration(milliseconds: 100), (){
         isSpin.value = false;
+        emptyCards(); // empty card1, card2, card3 from firebase
       });
 
     });
@@ -187,17 +188,29 @@ class HomeController extends GetxController {
     FirebaseFirestore.instance.collection("next_cards").doc("next_card").get().then((value) {
       var cardData = value.data()!; // Assuming this returns Map<String, dynamic>
 
+      print("cardData -- ${cardData}");
+
 // Convert to a list of values only
       List<String> cardList = [];
 
       cardData.forEach((key, value) {
-        if (value is String) { // Ensure value is a String
+        if (value is String && value.isNotEmpty) { // Ensure value is a String
           cardList.add(value);
         }
       });
 
       nextCards.value = cardList; // Updating RxList
       print(cardList);
+    });
+  }
+
+  //empty card1, card2, card3 from firebase
+  void emptyCards(){
+    nextCards.clear();
+    FirebaseFirestore.instance.collection("next_cards").doc("next_card").update({
+      "card1": "",
+      "card2": "",
+      "card3": "",
     });
   }
 }
