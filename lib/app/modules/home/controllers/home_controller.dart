@@ -151,9 +151,7 @@ class HomeController extends GetxController {
 
   //button click sound controller
   void buttonClickSound(){
-    if(isSound.value == true){
-      Get.find<AudioController>().stopAudio(AppAudio.btn_click);
-    }
+    Get.find<AudioController>().playAudio(AppAudio.btn_click);
   }
 
   //send amount in a variable

@@ -55,8 +55,16 @@ class MainView extends GetView<HomeController> {
                             height: 50,
                             margin: EdgeInsets.only(bottom: 25),
                             decoration: BoxDecoration(
-                              color: AppColors.buttonBg,
+                              color: Color(0xff9f0801),
                               borderRadius: BorderRadius.circular(5),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Color(0xff670600),
+                                  spreadRadius: 1,
+                                  blurRadius: 1,
+                                  offset: Offset(0, 3), // changes position of shadow
+                                ),
+                              ]
                             ),
                             child: Center(
                               child: Text(
@@ -85,7 +93,9 @@ class MainView extends GetView<HomeController> {
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 InkWell(
-                                  onTap: (){},
+                                  onTap: (){
+                                    controller.buttonClickSound();
+                                  },
                                   child: SizedBox(
                                     width: 10.w,
                                     height:10.h,
@@ -94,7 +104,9 @@ class MainView extends GetView<HomeController> {
                                 ),
                                  SizedBox(height: 7,),
                                 InkWell(
-                                  onTap: (){},
+                                  onTap: (){
+                                    controller.buttonClickSound();
+                                  },
                                   child: SizedBox(
                                     width: 10.w,
                                     height:10.h,
@@ -104,6 +116,7 @@ class MainView extends GetView<HomeController> {
                                 SizedBox(height: 7,),
                                 InkWell(
                                   onTap: (){
+                                    controller.buttonClickSound();
                                     controller.soundController();
                                   },
                                   child: SizedBox(
@@ -167,24 +180,25 @@ class MainView extends GetView<HomeController> {
                           Container(
                               width: 23.w,
                               height: 60,
+                              padding: EdgeInsets.all(5),
                               decoration: BoxDecoration(
-                                color: AppColors.buttonBg,
+                                color: Color(0xff8a2523),
                                 borderRadius: BorderRadius.circular(5),
-                                border: Border.all(color:Color(0xffC91016), width: 7),
+                                border: Border.all(color:Color(0xff6d1b18), width: 7),
                                 // image: DecorationImage(
                                 //   image: AssetImage(AppAssets.button_red),
                                 //   fit: BoxFit.cover,
                                 // ),
                               ),
-                              padding: EdgeInsets.all(3),
+
                               child: Row(
                                 children: [
                                   Container(
-                                    width: 13.w,
-                                    height: 60,
+                                    width: 11.w,
+                                    height: 40,
                                     // margin: EdgeInsets.only(top: 7, bottom: 7,),
                                     decoration: BoxDecoration(
-                                      color: Color(0xffB92836)
+                                      color: Color(0xff5d2223)
                                     ),
                                     child: Center(
                                       child: Obx(() {
@@ -211,7 +225,7 @@ class MainView extends GetView<HomeController> {
                                         // width: 8.w,
                                         // margin: EdgeInsets.only(top: 7, bottom: 7,),
                                         decoration: BoxDecoration(
-                                            color: Color(0xffA31C23)
+                                            color: Color(0xff511b1b)
                                         ),
                                         child: Center(
                                           child: Text("Reset",
@@ -235,9 +249,9 @@ class MainView extends GetView<HomeController> {
                               height: 60,
                               //margin: EdgeInsets.only(left: 10, right: 10),
                               decoration: BoxDecoration(
-                                color: AppColors.buttonBg,
+                                color: Color(0xff8a2523),
                                 borderRadius: BorderRadius.circular(5),
-                                border: Border.all(color:Color(0xffC91016), width: 7),
+                                border: Border.all(color:Color(0xff6d1b18), width: 7),
                               ),
                               padding: EdgeInsets.only(left: 10,),
                               child: Column(
@@ -259,7 +273,7 @@ class MainView extends GetView<HomeController> {
                                         height: 20,
                                         margin: EdgeInsets.only(top: 3),
                                         decoration: BoxDecoration(
-                                         color: AppColors.btnTextBg
+                                         color: Color(0xff5d2223)
                                         ),
                                         child: Center(
                                           child: Text("10000",
@@ -283,9 +297,9 @@ class MainView extends GetView<HomeController> {
                               height: 60,
                               //margin: EdgeInsets.only(left: 10, right: 10),
                               decoration: BoxDecoration(
-                                color: AppColors.buttonBg,
+                                color: Color(0xff8a2523),
                                 borderRadius: BorderRadius.circular(5),
-                                border: Border.all(color:Color(0xffC91016), width: 7),
+                                border: Border.all(color:Color(0xff6d1b18), width: 7),
                               ),
                               padding: EdgeInsets.only(left: 10,),
                               child: Column(
@@ -307,7 +321,7 @@ class MainView extends GetView<HomeController> {
                                         height: 20,
                                         margin: EdgeInsets.only(top: 3),
                                         decoration: BoxDecoration(
-                                         color: AppColors.btnTextBg
+                                         color: Color(0xff5d2223)
                                         ),
                                         child: Center(
                                           child: Text("100000",
@@ -413,7 +427,7 @@ class MainView extends GetView<HomeController> {
                                 height: 250,
                                 width: 600,
                                 //margin: EdgeInsets.only(left: 15, right: 15),
-                                color: Colors.black.withOpacity(0.3),
+                                color: Colors.black.withOpacity(0.6),
                                 child: Center(
                                   child: Stack(
                                     children: [
