@@ -13,9 +13,11 @@ class LeftSide extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     List<String> list = ["100", "1000", "10000"];
+    var size = MediaQuery.of(context).size;
     return Container(
       padding: EdgeInsets.only(left: 20),
       transform: Matrix4.translationValues(0.0, 0.0, 0.0),
+      width: size.width * 0.2,
       //height: size.height * 0.5,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,

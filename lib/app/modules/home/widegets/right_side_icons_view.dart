@@ -12,17 +12,18 @@ class RightSideIcons extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
     return Container(
-      width: 130,
-      transform: Matrix4.translationValues(0.0, -20.0, 0.0),
+      width: size.width * 0.2,
+      transform: Matrix4.translationValues(0.0, -40.0, 0.0),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           InkWell(
             onTap: (){},
             child: SizedBox(
-              width: 50,
-              height: 50,
+              width: 65,
+              height: 65,
               child: Image.asset(AppAssets.help),
             ),
           ),
@@ -30,8 +31,8 @@ class RightSideIcons extends GetView<HomeController> {
           InkWell(
             onTap: (){},
             child: SizedBox(
-              width: 50,
-              height: 50,
+              width: 65,
+              height: 65,
               child: Image.asset(AppAssets.share),
             ),
           ),
@@ -41,8 +42,8 @@ class RightSideIcons extends GetView<HomeController> {
               controller.soundController();
             },
             child: SizedBox(
-              width: 50,
-              height: 50,
+              width: 65,
+              height: 65,
               child: Obx((){
                 return Image.asset(controller.isSound.value ? AppAssets.sound : AppAssets.sound_off);
               }),
@@ -52,8 +53,8 @@ class RightSideIcons extends GetView<HomeController> {
           InkWell(
             onTap: (){},
             child: SizedBox(
-              width: 50,
-              height: 50,
+              width: 65,
+              height: 65,
               child: Image.asset(AppAssets.bonus),
             ),
           ),

@@ -14,6 +14,7 @@ class AppAssets {
   static const String centerBG = 'assets/image/centerbg.png';
   static const String centerFrame = 'assets/image/slot_frame.png';
   static const String button = 'assets/image/button.png';
+  static const String button_red = 'assets/image/red_btn.png';
   static const String dollarMore = 'assets/image/dollar_more.png';
   // static const String bonus = 'assets/image/bonus.png';
 }

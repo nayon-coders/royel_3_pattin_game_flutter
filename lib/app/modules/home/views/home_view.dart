@@ -34,7 +34,9 @@ class HomeView extends GetView<HomeController> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Center(child: Image.asset(AppAssets.logo, height: 90, width: 300,)),
+                Container(
+                    transform: Matrix4.translationValues(0.0, -20.0, 0.0),
+                    child: Center(child: Image.asset(AppAssets.logo, height: 100, width: 300,))),
                 //Row for buttons
                 Expanded(
                   child: Stack(
@@ -55,7 +57,7 @@ class HomeView extends GetView<HomeController> {
 
 
                       Positioned(
-                        bottom: 30, right: 25,
+                        bottom: 30, right: 55,
                         child:  InkWell(
                           onTap: (){
                             if(controller.isSpin.value == false){
@@ -95,33 +97,40 @@ class BottomButtonsViews extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Positioned(
-      bottom: 20,
+      bottom: 10,
       child:  Align(
         alignment: Alignment.center,
         child: Container(
           alignment: Alignment.center,
           //margin: EdgeInsets.only(left: size.width*0.22, right: 10),
-          transform: Matrix4.translationValues(15.0, 10.0, 0.0),
-          height: 60,
-          width: 560,
+          transform: Matrix4.translationValues(15.0, 8.0, 0.0),
+          height: 70,
+         // width: size.width,
           padding: const EdgeInsets.only(left: 10.0, right: 10),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               //button 1
               Container(
-                  width: 200,
-                  margin: EdgeInsets.only(left: 5, right: 5),
+                  width: 220,
+                  height: 70,
+                 // margin: EdgeInsets.only(left: 5, right: 5),
                   decoration: BoxDecoration(
                     color: AppColors.buttonBg,
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(5),
+                    border: Border.all(color:Color(0xffC91016), width: 7),
+                    // image: DecorationImage(
+                    //   image: AssetImage(AppAssets.button_red),
+                    //   fit: BoxFit.cover,
+                    // ),
                   ),
-                  padding: EdgeInsets.only(left: 10, right: 10, top: 4, bottom: 4),
+                  padding: EdgeInsets.all(3),
                   child: Row(
                     children: [
                       Container(
                         width: 110,
-                        margin: EdgeInsets.only(top: 7, bottom: 7,),
+                        height: 80,
+                       // margin: EdgeInsets.only(top: 7, bottom: 7,),
                         decoration: BoxDecoration(
                           image: DecorationImage(
                             image: AssetImage(AppAssets.button),
@@ -133,7 +142,7 @@ class BottomButtonsViews extends GetView<HomeController> {
                               return Text("Bed: ${controller.amount.value}",
                                 style: TextStyle(
                                   color: AppColors.textColor,
-                                  fontSize: 17,
+                                  fontSize: 18,
                                   fontWeight: FontWeight.bold,
                                 ),
                               );
@@ -150,7 +159,8 @@ class BottomButtonsViews extends GetView<HomeController> {
                             controller.setAmount("0.00");
                           },
                           child: Container(
-                            margin: EdgeInsets.only(top: 7, bottom: 7,),
+                            height: 60,
+                            // margin: EdgeInsets.only(top: 7, bottom: 7,),
                             decoration: BoxDecoration(
                               image: DecorationImage(
                                 image: AssetImage(AppAssets.button),
@@ -173,56 +183,39 @@ class BottomButtonsViews extends GetView<HomeController> {
                   )
               ),
 
-              Expanded(
-                child: Container(
-                    margin: EdgeInsets.only(left: 10, right: 10),
-                    decoration: BoxDecoration(
-                      color: AppColors.buttonBg,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    padding: EdgeInsets.only(left: 10, top: 2),
-                    child: Column(
-                      children: [
-                        Text("Balance",
-                          style: TextStyle(
-                            color: AppColors.textColor,
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                          ),
+              SizedBox(width: 20,),
+              Container(
+                width: 170,
+                  height: 70,
+                  //margin: EdgeInsets.only(left: 10, right: 10),
+                  decoration: BoxDecoration(
+                    color: AppColors.buttonBg,
+                    borderRadius: BorderRadius.circular(5),
+                    border: Border.all(color:Color(0xffC91016), width: 7),
+                    // image: DecorationImage(
+                    //   image: AssetImage(AppAssets.button_red),
+                    //   fit: BoxFit.cover,
+                    // ),
+                  ),
+                  padding: EdgeInsets.only(left: 10,),
+                  child: Column(
+                    children: [
+                      Text("Balance",
+                        style: TextStyle(
+                          color: AppColors.textColor,
+                          fontSize: 17,
+                          fontWeight: FontWeight.bold,
                         ),
-                        //SizedBox(height: 3,),
-                        Row(
-                          children: [
-                            Image.asset(AppAssets.dollarMore, height: 15, width: 20,),
-                            SizedBox(width: 5,),
-                            Container(
-                              width: 70,
-                              height: 20,
-                              margin: EdgeInsets.only(top: 7, bottom: 7,),
-                              decoration: BoxDecoration(
-                                image: DecorationImage(
-                                  image: AssetImage(AppAssets.button),
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                              child: Center(
-                                child: Text("10000",
-                                  style: TextStyle(
-                                    color: AppColors.textColor,
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          width: 5,
-                        ),
-                        Expanded(
-                          child:  Container(
-                            margin: EdgeInsets.only(top: 7, bottom: 7,),
+                      ),
+                      //SizedBox(height: 3,),
+                      Row(
+                        children: [
+                          Image.asset(AppAssets.dollarMore, height: 25, width: 20,),
+                          SizedBox(width: 5,),
+                          Container(
+                            width: 90,
+                            height: 25,
+                            margin: EdgeInsets.only(bottom: 7, top: 2),
                             decoration: BoxDecoration(
                               image: DecorationImage(
                                 image: AssetImage(AppAssets.button),
@@ -230,71 +223,56 @@ class BottomButtonsViews extends GetView<HomeController> {
                               ),
                             ),
                             child: Center(
-                              child: Text("Reset",
+                              child: Text("10000",
                                 style: TextStyle(
                                   color: AppColors.textColor,
-                                  fontSize: 20,
+                                  fontSize: 14,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
                             ),
                           ),
-                        )
-                      ],
-                    )
-                ),
+                        ],
+                      ),
+                    ],
+                  )
               ),
 
-              Expanded(
-                child: Container(
-                    margin: EdgeInsets.only(left: 10, right: 10),
-                    decoration: BoxDecoration(
-                      color: AppColors.buttonBg,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    padding: EdgeInsets.only(left: 10, top: 2),
-                    child: Column(
-                      children: [
-                        Text("Last Win",
-                          style: TextStyle(
-                            color: AppColors.textColor,
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                          ),
+              SizedBox(width: 20,),
+              Container(
+                  width: 170,
+                  height: 70,
+                  //margin: EdgeInsets.only(left: 10, right: 10),
+                  decoration: BoxDecoration(
+                    color: AppColors.buttonBg,
+                    borderRadius: BorderRadius.circular(5),
+                    border: Border.all(color:Color(0xffC91016), width: 7),
+                    // image: DecorationImage(
+                    //   image: AssetImage(AppAssets.button_red),
+                    //   fit: BoxFit.cover,
+                    // ),
+                  ),
+                  padding: EdgeInsets.only(left: 10,),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text("Last Win",
+                        style: TextStyle(
+                          color: AppColors.textColor,
+                          fontSize: 17,
+                          fontWeight: FontWeight.bold,
                         ),
-                        //SizedBox(height: 3,),
-                        Row(
-                          children: [
-                            Image.asset(AppAssets.dollarMore, height: 15, width: 20,),
-                            SizedBox(width: 5,),
-                            Container(
-                              width: 70,
-                              height: 20,
-                              margin: EdgeInsets.only(top: 7, bottom: 7,),
-                              decoration: BoxDecoration(
-                                image: DecorationImage(
-                                  image: AssetImage(AppAssets.button),
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                              child: Center(
-                                child: Text("10000",
-                                  style: TextStyle(
-                                    color: AppColors.textColor,
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          width: 5,
-                        ),
-                        Expanded(
-                          child:  Container(
-                            margin: EdgeInsets.only(top: 7, bottom: 7,),
+                      ),
+                      //SizedBox(height: 3,),
+                      Row(
+                        children: [
+                          Image.asset(AppAssets.dollarMore, height: 25, width: 20,),
+                          SizedBox(width: 5,),
+                          Container(
+                            width: 90,
+                            height: 25,
+                            margin: EdgeInsets.only(bottom: 7, top: 2),
                             decoration: BoxDecoration(
                               image: DecorationImage(
                                 image: AssetImage(AppAssets.button),
@@ -302,19 +280,42 @@ class BottomButtonsViews extends GetView<HomeController> {
                               ),
                             ),
                             child: Center(
-                              child: Text("Reset",
+                              child: Text("10000",
                                 style: TextStyle(
                                   color: AppColors.textColor,
-                                  fontSize: 20,
+                                  fontSize: 14,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
                             ),
                           ),
-                        )
-                      ],
-                    )
-                ),
+                        ],
+                      ),
+                      SizedBox(
+                        width: 5,
+                      ),
+                      Expanded(
+                        child:  Container(
+                          margin: EdgeInsets.only(top: 7, bottom: 7,),
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              image: AssetImage(AppAssets.button),
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          child: Center(
+                            child: Text("Reset",
+                              style: TextStyle(
+                                color: AppColors.textColor,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ),
+                      )
+                    ],
+                  )
               ),
             ],
           ),

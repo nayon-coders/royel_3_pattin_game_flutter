@@ -23,149 +23,117 @@ class CenterWidgets extends GetView<HomeController> {
         children: [
           SizedBox(
             height: 320,
-            width: 600,
+            width: size.width,
             child: Stack(
               children: [
+                Positioned(
+                  bottom: 0,
+                  child: BottomButtonsViews(size: size,),
+                ),
                 Container(
-                  transform: Matrix4.translationValues(0.0, -20.0, 0.0),
-                  height: 280,
-                  width: 600,
-                  margin: EdgeInsets.only(left: 10, right: 10),
+                  transform: Matrix4.translationValues(0.0, -40.0, 0.0),
+                  width: size.width,
+                  //margin: EdgeInsets.only(left: 5, right: 5),
                   decoration: BoxDecoration(
-                    // image: DecorationImage(
-                    //   image: AssetImage(AppAssets.centerBG),
-                    //   fit: BoxFit.fitWidth,
-                    // ),
+                   borderRadius: BorderRadius.circular(5),
+                    color: Colors.transparent,
+                    image: DecorationImage(
+                      image: AssetImage(AppAssets.centerBG),
+                      fit: BoxFit.fill,
+                    ),
+                    //border: Border.all(color:Color(0xffD32215), width: 10),
                   ),
-                  child: Stack(
-                    children: [
-                      //center frame
-                      Center(
-                        child: Image.asset(AppAssets.centerFrame, height: 280, width: size.width, fit: BoxFit.contain,),
-                      ),
-                      //center text
-                      Positioned(
-                        top: 7,
-                        child: Container(
-                          width: size.width,
-                          height: 280,
-                          margin: EdgeInsets.only(left: 15, right: 15),
-                         child: Row(
-                           mainAxisAlignment: MainAxisAlignment.start,
-                           children: [
-                             //this is for 1st spin
-                             Column(
-                               children: [
-                                 Obx(() {
-                                   return Visibility(
-                                     visible: controller.isSpin1st == false,
-                                     child: Container(
-                                       height: 250,
-                                       width: 170,
-                                       //padding: EdgeInsets.only(left: 1, top: 10),
-                                       padding: EdgeInsets.all(5),
-                                       child: Center(
-                                         child: Obx(() {
-                                             return Image.asset("${controller.nextCards.value.isEmpty ? controller.randomImages.value[0] : "assets/cards/${controller.nextCards.value[0]}"}",
-                                               height: 250,
-                                               width:170,
-                                               fit: BoxFit.contain,
-                                             );
-                                           }
-                                         ),
-                                       ),
-                                     ),
-                                   );
-                                 }
-                                 ),
-                                 Obx(() {
-                                   return Visibility(
-                                       visible: controller.isSpin1st.value,
-                                       child: AnimationSlider(controller: controller, size: size)
-                                   );
-                                 }
-                                 )
-                               ],
-                             ),
+                  child: Container(
+                    decoration: BoxDecoration(
 
-                             SizedBox(width: 15,),
-                             //this is for 2nd spin
-                             Column(
-                               children: [
-                                 Obx(() {
-                                   return Visibility(
-                                     visible: controller.isSpin2nd == false,
-                                     child: Container(
-                                       height: 250,
-                                       width: 170,
-                                       //padding: EdgeInsets.only(left: 1, top: 10),
-                                       padding: EdgeInsets.all(5),
-                                       child: Center(
-                                         child: Obx(() {
-                                           return Image.asset("${controller.nextCards.value.isEmpty ? controller.randomImages.value[1] : "assets/cards/${controller.nextCards.value[1]}"}",
-                                             height: 250,
-                                             width:170,
-                                             fit: BoxFit.contain,
-                                           );
-                                         }
-                                         ),
-                                       ),
-                                     ),
-                                   );
-                                 }
-                                 ),
-                                 Obx(() {
-                                   return Visibility(
-                                       visible: controller.isSpin2nd.value,
-                                       child: AnimationSlider(controller: controller, size: size)
-                                   );
-                                 }
-                                 )
-                               ],
-                             ),
-
-                             SizedBox(width: 15,),
-                             //this is for 3rd spin
-                             Column(
-                               children: [
-                                 Obx(() {
-                                   return Visibility(
-                                     visible: controller.isSpin3tr == false,
-                                     child: Container(
-                                       height: 250,
-                                       width: 170,
-                                       //padding: EdgeInsets.only(left: 1, top: 10),
-                                       padding: EdgeInsets.all(5),
-                                       child: Center(
-                                         child: Obx(() {
-                                           return Image.asset("${controller.nextCards.value.isEmpty ? controller.randomImages.value[2] : "assets/cards/${controller.nextCards.value[2]}"}",
-                                             height: 250,
-                                             width:170,
-                                             fit: BoxFit.contain,
-                                           );
-                                         }
-                                         ),
-                                       ),
-                                     ),
-                                   );
-                                 }
-                                 ),
-                                 Obx(() {
-                                   return Visibility(
-                                       visible: controller.isSpin3tr.value,
-                                       child: AnimationSlider(controller: controller, size: size)
-                                   );
-                                 }
-                                 )
-                               ],
-                             )
-
-                           ],
-                         ),
+                    ),
+                    width: size.width,
+                    height: 288,
+                    margin: EdgeInsets.only(left: 8),
+                   child: Row(
+                     children: [
+                       Obx(() {
+                         if(controller.isSpin1st.value == true){
+                            return AnimationSlider(controller: controller, size: size);
+                         }else{
+                            return Container(
+                              height: 280,
+                              width: 200,
+                              padding: EdgeInsets.all(5),
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(5),
+                              ),
+                              child: Center(
+                                child: Obx(() {
+                                  return Image.asset("${controller.nextCards.value.isEmpty ? controller.randomImages.value[0] : "assets/cards/${controller.nextCards.value[0]}"}",
+                                    height: 280,
+                                    width: 200,
+                                    fit: BoxFit.contain,
+                                  );
+                                }
+                                ),
+                              ),
+                            );
+                         }
+                         }
+                       ),
+                       SizedBox(width: 12,),
+                        Obx(() {
+                          if(controller.isSpin2nd.value == true){
+                            return AnimationSlider(controller: controller, size: size);
+                          }else{
+                            return Container(
+                              height: 280,
+                              width: 200,
+                              padding: EdgeInsets.all(5),
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(5),
+                              ),
+                              child: Center(
+                                child: Obx(() {
+                                  return Image.asset("${controller.nextCards.value.isEmpty ? controller.randomImages.value[1] : "assets/cards/${controller.nextCards.value[1]}"}",
+                                    height: 280,
+                                    width: 200,
+                                    fit: BoxFit.contain,
+                                  );
+                                }
+                                ),
+                              ),
+                            );
+                          }
+                          }
                         ),
-                      ),
-
-                    ],
+                       SizedBox(width: 12,),
+                        Obx(() {
+                          if(controller.isSpin3tr.value == true){
+                            return AnimationSlider(controller: controller, size: size);
+                          }else{
+                            return Container(
+                              height: 280,
+                              width: 200,
+                              padding: EdgeInsets.all(5),
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(5),
+                              ),
+                              child: Center(
+                                child: Obx(() {
+                                  return Image.asset("${controller.nextCards.value.isEmpty ? controller.randomImages.value[2] : "assets/cards/${controller.nextCards.value[2]}"}",
+                                    height: 280,
+                                    width: 200,
+                                    fit: BoxFit.contain,
+                                  );
+                                }
+                                ),
+                              ),
+                            );
+                          }
+                          }
+                        ),
+                     ],
+                   ),
                   ),
                 ),
                 Obx(() {
@@ -177,33 +145,33 @@ class CenterWidgets extends GetView<HomeController> {
                       left: 0,
                       right: 0,
                       child: Container(
-                        transform: Matrix4.translationValues(0.0, -8.0, 0.0),
+                        transform: Matrix4.translationValues(0.0, -40.0, 0.0),
                         height: 280,
-                        width: 600,
-                        margin: EdgeInsets.only(left: 15, right: 15),
-                        color: Colors.black.withOpacity(0.5),
+                        width: size.width,
+                        //margin: EdgeInsets.only(left: 15, right: 15),
+                        color: Colors.black.withOpacity(0.6),
                         child: Center(
                           child: Stack(
                             children: [
                               // Border Text (Shadow Effect)
                               Text(
-                                "Spin for test your luck",
+                                "SPIN for test your LUCK",
                                 style: TextStyle(
                                   fontSize: 40,
-                                  fontWeight: FontWeight.bold,
+                                  fontWeight: FontWeight.w400,
                                   foreground: Paint()
                                     ..style = PaintingStyle.stroke
-                                    ..strokeWidth = 4
+                                    ..strokeWidth = 1
                                     ..color = AppColors.textColor, // Border color
                                 ),
                               ),
                               // Main Text (Filling the Inside)
                               Text(
-                                "Spin for test your luck",
+                                "SPIN for test your LUCK",
                                 style: TextStyle(
                                   fontSize: 40,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black, // Inner text color
+                                  fontWeight: FontWeight.w400,
+                                  color: Colors.black, // w text color
                                 ),
                               ),
                             ],
@@ -214,10 +182,7 @@ class CenterWidgets extends GetView<HomeController> {
                   );
                 }
                 ),
-                Positioned(
-                  bottom: 0,
-                  child: BottomButtonsViews(size: size,),
-                )
+
               ],
             ),
           ),
@@ -241,24 +206,29 @@ class AnimationSlider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 250,
-      width: 170,
+      height: 280,
+      width: 200,
       child: CarouselSlider(
         items: controller.finalImageList.value.map((e) {
           return Container(
-            //padding: EdgeInsets.only(left: 1, top: 10),
+            height: 280,
+            width: 200,
             padding: EdgeInsets.all(5),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(5),
+            ),
             child: Center(
-              child: Image.asset(e,
-                height: 250,
-                width: 170,
+              child:Image.asset("${e}",
+                height: 280,
+                width: 200,
                 fit: BoxFit.contain,
               ),
             ),
           );
         }).toList(),
         options: CarouselOptions(
-          height: size.width*.27,
+          height: 280,
           autoPlay: true,
           enlargeCenterPage: false,
           viewportFraction: 1,
