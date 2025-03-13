@@ -23,12 +23,13 @@ class CenterWidgets extends GetView<HomeController> {
         children: [
           SizedBox(
             height: 320,
+            width: 600,
             child: Stack(
               children: [
                 Container(
                   transform: Matrix4.translationValues(0.0, -20.0, 0.0),
                   height: 280,
-                  width: size.width ,
+                  width: 600,
                   margin: EdgeInsets.only(left: 10, right: 10),
                   decoration: BoxDecoration(
                     // image: DecorationImage(
@@ -177,8 +178,8 @@ class CenterWidgets extends GetView<HomeController> {
                       right: 0,
                       child: Container(
                         transform: Matrix4.translationValues(0.0, -8.0, 0.0),
-                        height: size.height,
-                        width: size.width,
+                        height: 280,
+                        width: 600,
                         margin: EdgeInsets.only(left: 15, right: 15),
                         color: Colors.black.withOpacity(0.5),
                         child: Center(
