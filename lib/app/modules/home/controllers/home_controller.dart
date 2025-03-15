@@ -65,7 +65,9 @@ class HomeController extends GetxController {
 
 
   RxList<String> finalImageList = <String>[].obs;
+
   List<String> generateFinalImageList() {
+    finalImageList.clear();
     List<String> allC = [
       AppCardsC.c1, AppCardsC.c2, AppCardsC.c3, AppCardsC.c4, AppCardsC.c5, AppCardsC.c6, AppCardsC.c7,
       AppCardsC.c8, AppCardsC.c9, AppCardsC.c10, AppCardsC.c11, AppCardsC.c12, AppCardsC.c13,
@@ -86,20 +88,24 @@ class HomeController extends GetxController {
       AppCardI.i8, AppCardI.i9, AppCardI.i10, AppCardI.i11, AppCardI.i12, AppCardI.i13,
     ];
 
-    // Get random images from each list 0-99
-    List<String> selectedC = getRandomImagesFromEach(allC, 7 + Random().nextInt(2)); // 7 or 8
-    List<String> selectedF = getRandomImagesFromEach(allF, 7 + Random().nextInt(2));
-    List<String> selectedK = getRandomImagesFromEach(allK, 7 + Random().nextInt(2));
-    List<String> selectedI = getRandomImagesFromEach(allI, 7 + Random().nextInt(2));
+    Random random = Random();
+    List<List<String>> categories = [allC, allF, allK, allI];
 
-    // Combine all selected images
-    List<String> finalList = [...selectedC, ...selectedF, ...selectedK, ...selectedI];
+    List<String> finalList = [];
+
+    // Generate multiple groups of 3 cards each
+    int totalSets = 8; // 8 sets of 3 cards = 24 cards total
+    for (int i = 0; i < totalSets; i++) {
+      categories.shuffle(); // Shuffle to randomize category order
+      finalList.add(categories[0][random.nextInt(categories[0].length)]);
+      finalList.add(categories[1][random.nextInt(categories[1].length)]);
+      finalList.add(categories[2][random.nextInt(categories[2].length)]);
+    }
 
     finalImageList.value = finalList;
     print(finalList);
     return finalList;
   }
-
 
   //start sping and stop spin
   RxBool isSpin = false.obs;
@@ -158,7 +164,14 @@ class HomeController extends GetxController {
   RxString amount = '100'.obs;
   setAmount(String amt){
     buttonClickSound();
-    amount.value = amt;
+    amount.value = (int.parse("${amount.value}") + int.parse("${amt}")).toString();
+    print("amount -- ${amount.value}");
+    update();
+  }
+
+  resetAmount(){
+    amount.value = '0';
+    print("amount -- ${amount.value}");
     update();
   }
 

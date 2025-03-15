@@ -194,7 +194,7 @@ class MainView extends GetView<HomeController> {
                               child: Row(
                                 children: [
                                   Container(
-                                    width: 11.w,
+                                    width: 11.2.w,
                                     height: 40,
                                     // margin: EdgeInsets.only(top: 7, bottom: 7,),
                                     decoration: BoxDecoration(
@@ -205,7 +205,7 @@ class MainView extends GetView<HomeController> {
                                         return Text("Bet: ${controller.amount.value}",
                                           style: TextStyle(
                                             color: AppColors.textColor,
-                                            fontSize: 16,
+                                            fontSize: 15,
                                             fontWeight: FontWeight.w600,
                                           ),
                                         );
@@ -219,7 +219,7 @@ class MainView extends GetView<HomeController> {
                                   Expanded(
                                     child:  InkWell(
                                       onTap: (){
-                                        controller.setAmount("0.00");
+                                        controller.resetAmount();
                                       },
                                       child: Container(
                                         // width: 8.w,
@@ -324,7 +324,7 @@ class MainView extends GetView<HomeController> {
                                          color: Color(0xff5d2223)
                                         ),
                                         child: Center(
-                                          child: Text("100000",
+                                          child: Text("0",
                                             style: TextStyle(
                                               color: AppColors.textColor,
                                               fontSize: 13,
