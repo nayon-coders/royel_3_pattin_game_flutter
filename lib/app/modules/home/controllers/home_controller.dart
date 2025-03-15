@@ -64,47 +64,60 @@ class HomeController extends GetxController {
   }
 
 
-  RxList<String> finalImageList = <String>[].obs;
+  // Define RxLists for each slider's random images
+  RxList<String> finalImageListSlider1 = <String>[].obs;
+  RxList<String> finalImageListSlider2 = <String>[].obs;
+  RxList<String> finalImageListSlider3 = <String>[].obs;
 
-  List<String> generateFinalImageList() {
-    finalImageList.clear();
-    List<String> allC = [
+  List<String> generateRandomImageLists() {
+    // Define the lists of images
+    List<String> allImages = [
       AppCardsC.c1, AppCardsC.c2, AppCardsC.c3, AppCardsC.c4, AppCardsC.c5, AppCardsC.c6, AppCardsC.c7,
       AppCardsC.c8, AppCardsC.c9, AppCardsC.c10, AppCardsC.c11, AppCardsC.c12, AppCardsC.c13,
-    ];
-
-    List<String> allF = [
       AppCardF.f1, AppCardF.f2, AppCardF.f3, AppCardF.f4, AppCardF.f5, AppCardF.f6, AppCardF.f7,
       AppCardF.f8, AppCardF.f9, AppCardF.f10, AppCardF.f11, AppCardF.f12, AppCardF.f13,
-    ];
-
-    List<String> allK = [
       AppCardK.k1, AppCardK.k2, AppCardK.k3, AppCardK.k4, AppCardK.k5, AppCardK.k6, AppCardK.k7,
       AppCardK.k8, AppCardK.k9, AppCardK.k10, AppCardK.k11, AppCardK.k12, AppCardK.k13,
-    ];
-
-    List<String> allI = [
       AppCardI.i1, AppCardI.i2, AppCardI.i3, AppCardI.i4, AppCardI.i5, AppCardI.i6, AppCardI.i7,
       AppCardI.i8, AppCardI.i9, AppCardI.i10, AppCardI.i11, AppCardI.i12, AppCardI.i13,
     ];
 
     Random random = Random();
-    List<List<String>> categories = [allC, allF, allK, allI];
 
-    List<String> finalList = [];
+    // Create final lists to hold the result for each slider
+    List<String> finalListSlider1 = [];
+    List<String> finalListSlider2 = [];
+    List<String> finalListSlider3 = [];
 
-    // Generate multiple groups of 3 cards each
-    int totalSets = 8; // 8 sets of 3 cards = 24 cards total
+    int totalSets = 8; // Number of sets (3 images per set)
+
+    // Generate 3 random images per set for each slider
     for (int i = 0; i < totalSets; i++) {
-      categories.shuffle(); // Shuffle to randomize category order
-      finalList.add(categories[0][random.nextInt(categories[0].length)]);
-      finalList.add(categories[1][random.nextInt(categories[1].length)]);
-      finalList.add(categories[2][random.nextInt(categories[2].length)]);
+      // Shuffle the list of all images
+      allImages.shuffle();
+
+      // Pick 3 random images from the shuffled list
+      String image1 = allImages[0];  // Pick 1st image
+      String image2 = allImages[1];  // Pick 2nd image
+      String image3 = allImages[2];  // Pick 3rd image
+
+      // Add these images to the respective slider's list
+      finalListSlider1.add(image1);
+      finalListSlider2.add(image2);
+      finalListSlider3.add(image3);
     }
 
-    finalImageList.value = finalList;
-    print(finalList);
-    return finalList;
+    // Assign the generated lists to the respective RxLists
+    finalImageListSlider1.value = finalListSlider1;
+    finalImageListSlider2.value = finalListSlider2;
+    finalImageListSlider3.value = finalListSlider3;
+
+    // Debug print to verify the images being added
+    print("finalListSlider1----${finalListSlider1}");
+    print("finalListSlider2----${finalListSlider2}");
+    print("finalListSlider3----${finalListSlider3}");
+
+    return finalListSlider1;  // You can return any of the lists as needed
   }
 
   //start sping and stop spin

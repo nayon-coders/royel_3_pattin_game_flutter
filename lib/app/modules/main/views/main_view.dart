@@ -145,7 +145,7 @@ class MainView extends GetView<HomeController> {
                             onTap: (){
                               if(controller.isSpin.value == false){
                                 controller.getRandomImages();
-                                controller.generateFinalImageList();
+                                controller.generateRandomImageLists();
                                 controller.startSpin();
                               }
 
@@ -324,7 +324,7 @@ class MainView extends GetView<HomeController> {
                                          color: Color(0xff5d2223)
                                         ),
                                         child: Center(
-                                          child: Text("0",
+                                          child: Text("9300",
                                             style: TextStyle(
                                               color: AppColors.textColor,
                                               fontSize: 13,
@@ -369,7 +369,7 @@ class MainView extends GetView<HomeController> {
                             // First Card Slot
                             Obx(() {
                               return controller.isSpin1st.value
-                                  ? AnimationSlider(controller: controller)
+                                  ? AnimationSlider(controller: controller, images: controller.finalImageListSlider3)
                                   : buildCardContainer(
                                 controller.nextCards.value.isEmpty
                                     ? controller.randomImages.value[0]
@@ -380,7 +380,7 @@ class MainView extends GetView<HomeController> {
                             // Second Card Slot
                             Obx(() {
                               return controller.isSpin2nd.value
-                                  ? AnimationSlider(controller: controller)
+                                  ? AnimationSlider(controller: controller, images: controller.finalImageListSlider2)
                                   : buildCardContainer(
                                 controller.nextCards.value.isEmpty
                                     ? controller.randomImages.value[1]
@@ -391,7 +391,7 @@ class MainView extends GetView<HomeController> {
                             // Third Card Slot
                             Obx(() {
                               return controller.isSpin3tr.value
-                                  ? AnimationSlider(controller: controller)
+                                  ? AnimationSlider(controller: controller, images: controller.finalImageListSlider1)
                                   : buildCardContainer(
                                 controller.nextCards.value.isEmpty
                                     ? controller.randomImages.value[2]
@@ -501,9 +501,11 @@ class AnimationSlider extends StatelessWidget {
   const AnimationSlider({
     super.key,
     required this.controller,
+    required this.images
   });
 
   final HomeController controller;
+  final List images;
 
   @override
   Widget build(BuildContext context) {
@@ -511,7 +513,7 @@ class AnimationSlider extends StatelessWidget {
       height: 55.h,
       width: 20.w,
       child: CarouselSlider(
-        items: controller.finalImageList.value.map((e) {
+        items: images.map((e) {
           return Container(
             height: 55.h,
             width: 20.w,
